@@ -1,0 +1,247 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://fabled-cocoa-612.appspot.com/_ah/api",
+  "name" : "creditCardEndpoint",
+  "version" : "v1",
+  "description" : "Lets you manage credit cards associated to a user.",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://fabled-cocoa-612.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "endpoints.renobidz.com",
+  "ownerName" : "endpoints.renobidz.com",
+  "methods" : {
+    "creditCardEndpoint.delete" : {
+      "path" : "delete",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CreditCardEndpoint.delete",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "creditCardEndpoint.create" : {
+      "path" : "create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CreditCardEndpoint.create",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "creditCardEndpoint.update" : {
+      "path" : "update",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CreditCardEndpoint.update",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "creditCardEndpoint.listByUserId" : {
+      "path" : "listByUserId",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CreditCardEndpoint.listByUserId",
+      "request" : {
+        "parameters" : {
+          "userId" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "creditCardEndpoint.get" : {
+      "path" : "get",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CreditCardEndpoint.get",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Response" : {
+        "id" : "Response",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "$ref" : "STATUS"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "STATUS" : {
+        "id" : "STATUS",
+        "type" : "string",
+        "enum" : [ "SUCCESS", "FAILURE" ]
+      },
+      "CreditCardDTO" : {
+        "id" : "CreditCardDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "cardType" : {
+            "$ref" : "CREDITCARD"
+          },
+          "cardHolderName" : {
+            "type" : "string"
+          },
+          "cardNumber" : {
+            "type" : "string"
+          },
+          "expMonth" : {
+            "type" : "string"
+          },
+          "expYear" : {
+            "type" : "string"
+          },
+          "isValidated" : {
+            "type" : "boolean"
+          },
+          "avsNumber" : {
+            "type" : "string"
+          },
+          "avsStreet" : {
+            "type" : "string"
+          },
+          "avsZipCode" : {
+            "type" : "string"
+          },
+          "cvdCode" : {
+            "type" : "string"
+          },
+          "cvdIndicator" : {
+            "type" : "string"
+          },
+          "isDefault" : {
+            "type" : "boolean"
+          },
+          "userId" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "CREDITCARD" : {
+        "id" : "CREDITCARD",
+        "type" : "string",
+        "enum" : [ "VISA", "MASTERCARD", "AMEX", "JCB", "DINERSCLUB" ]
+      },
+      "CreditCardDTOCollection" : {
+        "id" : "CreditCardDTOCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "CreditCardDTO"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.renobidz.endpoints.CreditCardEndpoint.delete" : {
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CreditCardEndpoint.create" : {
+        "request" : {
+          "$ref" : "CreditCardDTO"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CreditCardEndpoint.update" : {
+        "request" : {
+          "$ref" : "CreditCardDTO"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CreditCardEndpoint.listByUserId" : {
+        "response" : {
+          "$ref" : "CreditCardDTOCollection"
+        }
+      },
+      "com.renobidz.endpoints.CreditCardEndpoint.get" : {
+        "response" : {
+          "$ref" : "CreditCardDTO"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://fabled-cocoa-612.appspot.com/_ah/api",
+  "name" : "stdProjectEndpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://fabled-cocoa-612.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "endpoints.renobidz.com",
+  "ownerName" : "endpoints.renobidz.com",
+  "methods" : {
+    "stdProjectEndpoint.get" : {
+      "path" : "stdprojectdtocollection/{language}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.StdProjectEndpoint.getByLang",
+      "request" : {
+        "parameters" : {
+          "language" : {
+            "enum" : {
+              "EN" : {
+              },
+              "FR" : {
+              },
+              "ES" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "stdProjectEndpoint.delete" : {
+      "path" : "delete/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.StdProjectEndpoint.delete",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "stdProjectEndpoint.create" : {
+      "path" : "create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.StdProjectEndpoint.create",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "StdProjectDTO" : {
+        "id" : "StdProjectDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "project" : {
+            "type" : "string"
+          },
+          "language" : {
+            "$ref" : "LANGUAGE"
+          },
+          "categoryId" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "LANGUAGE" : {
+        "id" : "LANGUAGE",
+        "type" : "string",
+        "enum" : [ "EN", "FR", "ES" ]
+      },
+      "StdProjectDTOCollection" : {
+        "id" : "StdProjectDTOCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "StdProjectDTO"
+            }
+          }
+        }
+      },
+      "Response" : {
+        "id" : "Response",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "$ref" : "STATUS"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "STATUS" : {
+        "id" : "STATUS",
+        "type" : "string",
+        "enum" : [ "SUCCESS", "FAILURE" ]
+      }
+    },
+    "methods" : {
+      "com.renobidz.endpoints.StdProjectEndpoint.getByLang" : {
+        "response" : {
+          "$ref" : "StdProjectDTOCollection"
+        }
+      },
+      "com.renobidz.endpoints.StdProjectEndpoint.delete" : {
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.StdProjectEndpoint.create" : {
+        "request" : {
+          "$ref" : "StdProjectDTO"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      }
+    }
+  }
+}

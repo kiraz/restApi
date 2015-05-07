@@ -1,0 +1,229 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://fabled-cocoa-612.appspot.com/_ah/api",
+  "name" : "companyEndpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://fabled-cocoa-612.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "endpoints.renobidz.com",
+  "ownerName" : "endpoints.renobidz.com",
+  "methods" : {
+    "companyEndpoint.update" : {
+      "path" : "update",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CompanyEndpoint.updateUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "companyEndpoint.get" : {
+      "path" : "get",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CompanyEndpoint.get",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "companyEndpoint.delete" : {
+      "path" : "delete",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CompanyEndpoint.delete",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "companyEndpoint.create" : {
+      "path" : "create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CompanyEndpoint.create",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "companyEndpoint.getByUserId" : {
+      "path" : "getByUserId",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CompanyEndpoint.getByUserId",
+      "request" : {
+        "parameters" : {
+          "userId" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CompanyDTO" : {
+        "id" : "CompanyDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "servicedCategory" : {
+            "type" : "string"
+          },
+          "website" : {
+            "type" : "string"
+          },
+          "licenseNumber" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "servicesProvided" : {
+            "type" : "string"
+          },
+          "areasServed" : {
+            "type" : "string"
+          },
+          "certificationsAndAwards" : {
+            "type" : "string"
+          },
+          "affiliations" : {
+            "type" : "string"
+          },
+          "typicalJobCostCurrency" : {
+            "type" : "string"
+          },
+          "typicalJobCostFrom" : {
+            "type" : "string"
+          },
+          "typicalJobCostTo" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "Response" : {
+        "id" : "Response",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "$ref" : "STATUS"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "STATUS" : {
+        "id" : "STATUS",
+        "type" : "string",
+        "enum" : [ "SUCCESS", "FAILURE" ]
+      }
+    },
+    "methods" : {
+      "com.renobidz.endpoints.CompanyEndpoint.updateUser" : {
+        "request" : {
+          "$ref" : "CompanyDTO"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CompanyEndpoint.get" : {
+        "response" : {
+          "$ref" : "CompanyDTO"
+        }
+      },
+      "com.renobidz.endpoints.CompanyEndpoint.delete" : {
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CompanyEndpoint.create" : {
+        "request" : {
+          "$ref" : "CompanyDTO"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CompanyEndpoint.getByUserId" : {
+        "response" : {
+          "$ref" : "CompanyDTO"
+        }
+      }
+    }
+  }
+}

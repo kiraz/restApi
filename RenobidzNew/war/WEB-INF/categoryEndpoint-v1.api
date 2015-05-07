@@ -1,0 +1,191 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://fabled-cocoa-612.appspot.com/_ah/api",
+  "name" : "categoryEndpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://fabled-cocoa-612.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "endpoints.renobidz.com",
+  "ownerName" : "endpoints.renobidz.com",
+  "methods" : {
+    "categoryEndpoint.get" : {
+      "path" : "categorycollection/{language}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CategoryEndpoint.getByLang",
+      "request" : {
+        "parameters" : {
+          "language" : {
+            "enum" : {
+              "EN" : {
+              },
+              "FR" : {
+              },
+              "ES" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "categoryEndpoint.create" : {
+      "path" : "create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CategoryEndpoint.create",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "categoryEndpoint.update" : {
+      "path" : "response",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CategoryEndpoint.update",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "categoryEndpoint.delete" : {
+      "path" : "delete/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.renobidz.endpoints.CategoryEndpoint.delete",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Category" : {
+        "id" : "Category",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "category" : {
+            "type" : "string"
+          },
+          "language" : {
+            "$ref" : "LANGUAGE"
+          }
+        }
+      },
+      "LANGUAGE" : {
+        "id" : "LANGUAGE",
+        "type" : "string",
+        "enum" : [ "EN", "FR", "ES" ]
+      },
+      "CategoryCollection" : {
+        "id" : "CategoryCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Category"
+            }
+          }
+        }
+      },
+      "Response" : {
+        "id" : "Response",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "$ref" : "STATUS"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "STATUS" : {
+        "id" : "STATUS",
+        "type" : "string",
+        "enum" : [ "SUCCESS", "FAILURE" ]
+      }
+    },
+    "methods" : {
+      "com.renobidz.endpoints.CategoryEndpoint.getByLang" : {
+        "response" : {
+          "$ref" : "CategoryCollection"
+        }
+      },
+      "com.renobidz.endpoints.CategoryEndpoint.create" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CategoryEndpoint.update" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Response"
+        }
+      },
+      "com.renobidz.endpoints.CategoryEndpoint.delete" : {
+      }
+    }
+  }
+}

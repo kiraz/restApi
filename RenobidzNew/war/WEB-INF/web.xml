@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet
+  </servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value>com.renobidz.endpoints.AddressEndpoint,com.renobidz.endpoints.CartEndpoint,com.renobidz.endpoints.CategoryEndpoint,com.renobidz.endpoints.CommentEndpoint,com.renobidz.endpoints.CompanyEndpoint,com.renobidz.endpoints.CreditCardEndpoint,com.renobidz.endpoints.FileInfoEndpoint,com.renobidz.endpoints.IdeaBookEndpoint,com.renobidz.endpoints.PortfolioEndpoint,com.renobidz.endpoints.ProductEndpoint,com.renobidz.endpoints.QuestionEndpoint,com.renobidz.endpoints.ServiceEndpoint,com.renobidz.endpoints.StdProjectEndpoint,com.renobidz.endpoints.SupplierEndpoint,com.renobidz.endpoints.TransactionEndpoint,com.renobidz.endpoints.UserEndpoint</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+
+ <!-- Servlet required for activation of user -->
+ <servlet>
+  <servlet-name>LogoutUser</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.LogoutUser</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>LogoutUser</servlet-name>
+  <url-pattern>/logout</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>ActivateUser</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.ActivateUser</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>ActivateUser</servlet-name>
+  <url-pattern>/activate</url-pattern>
+ </servlet-mapping>
+
+ <servlet>
+  <servlet-name>ResetPasswordUser</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.ResetPasswordUser
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>ResetPasswordUser</servlet-name>
+  <url-pattern>/resetpassword</url-pattern>
+ </servlet-mapping>
+
+ <servlet>
+  <servlet-name>SocialLoginRedirectServlet</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.SocialLoginRedirectServlet
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SocialLoginRedirectServlet</servlet-name>
+  <url-pattern>/sociallogin</url-pattern>
+ </servlet-mapping>
+
+ <servlet>
+  <servlet-name>SocialLoginSuccessServlet</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.SocialLoginSuccessServlet
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SocialLoginSuccessServlet</servlet-name>
+  <url-pattern>/confirm</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>UserDashboard</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.UserDashboard
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>UserDashboard</servlet-name>
+  <url-pattern>/user/dashboard</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>CompanyDashboard</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.CompanyDashboard
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>CompanyDashboard</servlet-name>
+  <url-pattern>/company/dashboard</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>CompanyPortfolio</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.CompanyPortfolio
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>CompanyPortfolio</servlet-name>
+  <url-pattern>/company/portfolio</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>FileUpload</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.FileUpload
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>FileUpload</servlet-name>
+  <url-pattern>/file-upload</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>FileDownload</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.FileDownload
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>FileDownload</servlet-name>
+  <url-pattern>/file-download</url-pattern>
+ </servlet-mapping>
+
+<!--  <servlet>
+  <servlet-name>LoginUser</servlet-name>
+  <servlet-class>com.renobidz.web.servlet.LoginUser
+  </servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>LoginUser</servlet-name>
+  <url-pattern>/LoginUser</url-pattern>
+ </servlet-mapping> -->
+
+ <!-- END -->
+
+ <welcome-file-list>
+  <welcome-file>pages/index.jsp</welcome-file>
+ </welcome-file-list>
+
+ <filter>
+  <filter-name>ObjectifyFilter</filter-name>
+  <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>ObjectifyFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+</web-app>
